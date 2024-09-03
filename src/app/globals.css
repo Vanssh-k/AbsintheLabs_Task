@@ -17,17 +17,90 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-elevationBack;
+  font-family: 'Inter', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.horizontal-scrollbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .left-side,
+  & .right-side {
+    display: flex;
+    gap: 20px;
+  }
+
+  & .scrollbar-container {
+    width: 12px;
+    height: 100%;
+    background-color: #111315;
+    transition: background-color 0.3s ease-in-out;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #0c0e10;
+      border-radius: 6px;
+      transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #080a0b;
+      border-radius: 6px;
+      transition: background-color 0.3s ease-in-out;
+    }
+  }
+
+  &:hover .scrollbar-container {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &:hover .scrollbar-container::-webkit-scrollbar-thumb {
+    background-color: #14171a;
+    opacity: 0.8;
+  }
+
+  &:active .scrollbar-container::-webkit-scrollbar-thumb {
+    background-color: #14171a;
+    opacity: 1;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 }
+
+
+
+/* .horizontal-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: '#0c0e10';
+    border-radius: 16px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: '#080a0b';
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-corner {
+    display: none;
+    opacity: 0;
+  }
+} */
