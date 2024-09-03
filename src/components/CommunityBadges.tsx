@@ -4,7 +4,7 @@ import Badge from "./Badge";
 
 const CommunityBadges = () => {
   return (
-    <Box>
+    <Box className="py-2">
       <Box className="text-textP text-xs font-medium mt-10">
         <Text>Community Badges</Text>
       </Box>

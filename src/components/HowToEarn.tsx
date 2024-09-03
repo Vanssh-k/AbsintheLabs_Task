@@ -4,10 +4,22 @@ import ActionCard from "./ActionCard";
 interface HowToEarnProps {}
 
 const HowToEarn: React.FC<HowToEarnProps> = () => {
-  const x = [0, 1, 2];
+  const actions = [
+    { id: 0, text: "Provide at least $50 Liquidity to LINK/ETH", status: true },
+    {
+      id: 1,
+      text: "Provide at least $50 Liquidity to LINK/ETH",
+      status: false,
+    },
+    {
+      id: 2,
+      text: "Provide at least $50 Liquidity to LINK/ETH",
+      status: false,
+    },
+  ];
 
   return (
-    <Box>
+    <Box className="py-2">
       <Box className="flex justify-between p-1">
         <Box className="flex text-sm space-x-1">
           <Text className="text-textP font-semibold">How to Earn: </Text>
@@ -29,17 +41,23 @@ const HowToEarn: React.FC<HowToEarnProps> = () => {
         </Box>
       </Box>
       <Box className="flex space-x-12 mt-3">
-        {x.map((x) => (
+        {actions.map((action) => (
           <ActionCard
-            key={x}
-            status={true}
-            text="Provide at least $50 Liquidity to LINK/ETH"
+            key={action.id}
+            status={action.status}
+            text={action.text}
           />
         ))}
       </Box>
-      <Box className="flex space-x-12 mt-3">
-        {x.map((x) => (
-          <Box key={x} className="bg-green2 rounded-3xl h-1 w-96"></Box>
+      <Box className="flex space-x-7 mt-4">
+        {actions.map((action) => (
+          <Box
+            key={action.id}
+            className={`${
+              action.status ? "bg-green2" : "bg-elevation3"
+            }  rounded-3xl h-1`}
+            style={{ width: 400 }}
+          ></Box>
         ))}
       </Box>
     </Box>

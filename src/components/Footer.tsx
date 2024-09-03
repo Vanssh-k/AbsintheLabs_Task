@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <Box className="flex items-center px-6 py-4 bg-elevation2">
+    <Box className="flex items-center py-3 bg-elevation2 mt-2 px-32">
       <Box className="flex space-x-2">
         <Link href="/" className="">
           <Image
@@ -14,7 +14,7 @@ const Footer = () => {
             className="rounded-xl"
           ></Image>
         </Link>
-        <Link href="/" className="">
+        <Link href="https://x.com/absinthe_labs" target="_blank" className="">
           <Image
             src="/images/svg/x.svg"
             alt="Social Icon X"
@@ -23,7 +23,7 @@ const Footer = () => {
             className="rounded-xl"
           ></Image>
         </Link>
-        <Link href="/" className="">
+        <Link href="https://github.com/AbsintheLabs" target="_blank" className="">
           <Image
             src="/images/svg/github.svg"
             alt="Social Icon Github"

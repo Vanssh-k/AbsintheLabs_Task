@@ -21,6 +21,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+table {
+  width: 100%;
+}
+
 .horizontal-scrollbar {
   display: flex;
   justify-content: space-between;

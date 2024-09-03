@@ -1,4 +1,4 @@
-import { Box, Button } from "@radix-ui/themes";
+import { Box, Button, Text } from "@radix-ui/themes";
 import { badges } from "../helper";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { useRef, useState } from "react";
@@ -6,7 +6,6 @@ import Badge from "./Badge";
 
 const BadgeCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-//   const carouselRef = useRef<HTMLDivElement>(null);
 
   const setBadges = () => {
     let newBadges = [];
@@ -46,31 +45,33 @@ const BadgeCarousel = () => {
   };
 
   return (
-    <Box className="w-full max-w-6xl mx-auto p-4 flex items-center text-textBtn">
-      <Button
-        onClick={handlePrev}
-        className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
-      >
-        <ChevronLeftIcon className="transition-transform duration-300 h-6 w-6" />
-      </Button>
+    <Box className="py-2">
+      <Text className="text-textS font-medium" style={{ fontSize: 16 }}>
+        Badges
+      </Text>
+      <Box className="w-full mx-auto flex items-center text-textBtn h-72 py-5">
+        <Button
+          onClick={handlePrev}
+          className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
+        >
+          <ChevronLeftIcon className="transition-transform duration-300 h-6 w-6" />
+        </Button>
 
-      <Box className="relative rounded-lg shadow-md flex items-center">
-        {newBadges.map((badge, index) => (
-          <Box
-            key={badge.id}
-            className={`${getBadgeStyle(index)} inset-0`}
-          >
-            <Badge badge={badge} earned={badge.earned} />
-          </Box>
-        ))}
+        <Box className="relative right-4 h-full overflow-x-hidden overflow-y-visible rounded-lg shadow-md flex items-center">
+          {newBadges.map((badge, index) => (
+            <Box key={badge.id} className={`${getBadgeStyle(index)} inset-0`}>
+              <Badge badge={badge} earned={badge.earned} />
+            </Box>
+          ))}
+        </Box>
+
+        <Button
+          onClick={handleNext}
+          className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
+        >
+          <ChevronRightIcon className="transition-transform duration-300 h-6 w-6" />
+        </Button>
       </Box>
-
-      <Button
-        onClick={handleNext}
-        className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
-      >
-        <ChevronRightIcon className="transition-transform duration-300 h-6 w-6" />
-      </Button>
     </Box>
   );
 };
