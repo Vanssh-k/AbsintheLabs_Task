@@ -12,6 +12,7 @@ const config: Config = {
       elevation1: '#0c0e10',
       elevation2: '#111315',
       elevation3: '#16181a',
+      elevation4: '#282a2c',
       textP: '#f7f7f8',
       textS: '#abafb4',
       textD: '#abafb4',
