@@ -9,7 +9,7 @@ const CommunityBadges = () => {
         <Text>Community Badges</Text>
       </Box>
       <Box className="w-full overflow-x-auto horizontal-scrollbar mt-4 bg-elevation1 rounded-b-xl py-2 px-4 pb-6 ">
-        <Box className="flex space-x-4">
+        <Box className="md:flex md:space-x-4 md:gap-0 grid grid-cols-5 gap-x-52 gap-y-3">
           {badges.map((badge, index) => (
             <Badge key={index} badge={badge} earned={badge.earned} />
           ))}

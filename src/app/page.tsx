@@ -14,11 +14,11 @@ export default function Home() {
   return (
     <ApolloProvider client={client}>
       <Theme>
-        <Box className="lg:px-32 py-2">
+        <Box className="lg:px-32 px-6 py-2">
           <Header />
           <LastActivities />
           <BadgeCarousel />
-          {/* <HowToEarn /> */}
+          <HowToEarn />
           <CommunityBadges />
         </Box>
           <Footer />

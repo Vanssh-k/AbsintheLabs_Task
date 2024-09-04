@@ -41,13 +41,13 @@ const LastActivities = () => {
   };
 
   return (
-    <Box className="py-2">
+    <Box className="py-2 collapse md:visible">
       <Box className="mb-4">
         <Text className="text-textS font-medium" style={{ fontSize: 16 }}>
           Last Activities
         </Text>
       </Box>
-      <Box className="w-full text-textP overflow-x-auto rounded-xl">
+      <Box className="w-full text-textP overflow-x-auto rounded-xl h-0 md:h-full">
         <Table.Root className="min-w-full border-collapse">
           <Table.Header className="bg-elevation3 text-textS text-xs font-medium h-11 border-collapse">
             <Table.Row>

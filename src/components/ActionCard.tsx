@@ -7,8 +7,8 @@ interface ActionCardProps {
 
 const ActionCard: React.FC<ActionCardProps> = ({status, text}) => {
   return (
-    <Box className="rounded-xl w-96">
-      <Box className="flex justify-between items-center text-sm font-medium px-4 py-3 bg-elevation3 border-b border-elevationBack rounded-t-xl">
+    <Box className="rounded-xl md:w-96">
+      <Box className="flex justify-between items-center text-sm font-medium px-4 py-2 md:py-3 bg-elevation3 border-b border-elevationBack rounded-t-xl">
         <Text className="text-textS">Action</Text>
         {status===true && (
           <Box
@@ -19,7 +19,7 @@ const ActionCard: React.FC<ActionCardProps> = ({status, text}) => {
           </Box>
         )}
       </Box>
-      <Box className="bg-elevation2 px-4 py-3 rounded-b-xl">
+      <Box className="bg-elevation2 px-4 py-1 md:py-3 rounded-b-xl">
         <Text className="text-textS text-sm font-normal">{text}</Text>
       </Box>
     </Box>

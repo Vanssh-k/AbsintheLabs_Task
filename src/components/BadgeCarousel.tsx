@@ -28,15 +28,15 @@ const BadgeCarousel = () => {
   const opacityBadges = (index: number): string => {
     switch (index) {
       case 3:
-        return "scale-110 opacity-100 px-8";
+        return "lg:scale-110 lg:opacity-100 lg:px-8";
       case 2:
       case 4:
-        return "scale-90 opacity-50";
+        return "lg:scale-90 lg:opacity-50";
       case 1:
       case 5:
-        return "scale-75 opacity-50";
+        return "lg:scale-75 lg:opacity-50";
       default:
-        return "scale-50 opacity-50";
+        return "lg:scale-50 lg:opacity-50";
     }
   };
 
@@ -45,7 +45,7 @@ const BadgeCarousel = () => {
   };
 
   return (
-    <Box className="py-2">
+    <Box className="md:py-2">
       <Text className="text-textS font-medium" style={{ fontSize: 16 }}>
         Badges
       </Text>
@@ -57,9 +57,12 @@ const BadgeCarousel = () => {
           <ChevronLeftIcon className="transition-transform duration-300 h-6 w-6" />
         </Button>
 
-        <Box className="relative right-4 h-full overflow-x-hidden overflow-y-visible rounded-lg shadow-md flex items-center">
+        <Box className="relative md:right-4 lg:right-4 h-full overflow-x-hidden overflow-y-visible rounded-lg shadow-md flex items-center">
           {newBadges.map((badge, index) => (
-            <Box key={badge.id} className={`${getBadgeStyle(index)} inset-0`}>
+            <Box
+              key={badge.id}
+              className={`mx-5 lg:mx-0 ${getBadgeStyle(index)} inset-0`}
+            >
               <Badge badge={badge} earned={badge.earned} />
             </Box>
           ))}
