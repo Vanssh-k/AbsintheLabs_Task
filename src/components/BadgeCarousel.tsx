@@ -52,6 +52,13 @@ const BadgeCarousel = () => {
     return `${opacityBadges(index)} transition-opacity duration-300`;
   };
 
+  let value: number = -1;
+  if (typeof window !== "undefined") {
+    value = window.innerWidth < 600 ? 0 : 3;
+  } else {
+    value = 3
+  }
+
   return (
     <Box className="md:py-2">
       <Text className="text-textS font-medium" style={{ fontSize: 16 }}>
@@ -78,7 +85,7 @@ const BadgeCarousel = () => {
               onClick={() => handleBadgeClick(index)}
             >
               <Badge badge={badge} earned={badge.earned} />
-              {index === (window.innerWidth < 600 ? 0 : 3) && (
+              {index === value && (
                 <Box className="text-xs font-medium text-center px-5 py-2 bg-elevation3 rounded-xl mt-2">
                   <Text className="text-textP block">Reward Details</Text>
                   <Text className="text-textS block">
