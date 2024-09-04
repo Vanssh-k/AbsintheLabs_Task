@@ -14,10 +14,9 @@ const LastActivities = () => {
     }
   `;
 
-  const { data, loading, error } = useSubscription(LOGS_SUBSCRIPTION);
+  const { data, loading } = useSubscription(LOGS_SUBSCRIPTION);
 
   const logs = data?.logs;
-  console.log("data", logs);
 
   const convertToLocal = (timestamp: any) => {
     const dateObj = new Date(timestamp);
@@ -110,7 +109,7 @@ const LastActivities = () => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {loading
+            {loading || !data
               ? Array(6)
                   .fill(null)
                   .map((_, index) => <SkeletonRow key={index} />)

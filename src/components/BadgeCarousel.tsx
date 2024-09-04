@@ -1,7 +1,7 @@
 import { Box, Button, Text } from "@radix-ui/themes";
 import { badges } from "../helper";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Badge from "./Badge";
 
 const BadgeCarousel = () => {
@@ -23,12 +23,20 @@ const BadgeCarousel = () => {
     setActiveIndex((prev) => (prev - 1 + badges.length) % badges.length);
   };
 
+  const handleBadgeClick = (index: number) => {
+    setActiveIndex(index);
+    const newBadges = setBadges();
+    if (newBadges[index] && !newBadges[index].earned) {
+      handleNext();
+    }
+  };
+
   const newBadges = setBadges();
 
   const opacityBadges = (index: number): string => {
     switch (index) {
       case 3:
-        return "lg:scale-110 lg:opacity-100 lg:px-8";
+        return "lg:scale-105 lg:opacity-100 lg:px-7";
       case 2:
       case 4:
         return "lg:scale-90 lg:opacity-50";
@@ -49,10 +57,13 @@ const BadgeCarousel = () => {
       <Text className="text-textS font-medium" style={{ fontSize: 16 }}>
         Badges
       </Text>
-      <Box className="w-full mx-auto flex items-center text-textBtn h-72 py-5">
+      <Box
+        className="w-full mx-auto flex items-center text-textBtn py-5"
+        style={{ height: 350 }}
+      >
         <Button
           onClick={handlePrev}
-          className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
+          className="p-2 bg-elevation3 h-5/6 rounded-full transition-colors duration-300"
         >
           <ChevronLeftIcon className="transition-transform duration-300 h-6 w-6" />
         </Button>
@@ -61,16 +72,27 @@ const BadgeCarousel = () => {
           {newBadges.map((badge, index) => (
             <Box
               key={badge.id}
-              className={`mx-5 lg:mx-0 ${getBadgeStyle(index)} inset-0`}
+              className={`mx-5 lg:mx-0 ${getBadgeStyle(
+                index
+              )} inset-0 cursor-pointer`}
+              onClick={() => handleBadgeClick(index)}
             >
               <Badge badge={badge} earned={badge.earned} />
+              {index === (window.innerWidth < 600 ? 0 : 3) && (
+                <Box className="text-xs font-medium text-center px-5 py-2 bg-elevation3 rounded-xl mt-2">
+                  <Text className="text-textP block">Reward Details</Text>
+                  <Text className="text-textS block">
+                    Liquidity Provision to ETH/USDC
+                  </Text>
+                </Box>
+              )}
             </Box>
           ))}
         </Box>
 
         <Button
           onClick={handleNext}
-          className="p-2 bg-elevation3 h-48 rounded-full transition-colors duration-300"
+          className="p-2 bg-elevation3 h-5/6 rounded-full transition-colors duration-300"
         >
           <ChevronRightIcon className="transition-transform duration-300 h-6 w-6" />
         </Button>
