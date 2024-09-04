@@ -5,12 +5,12 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:8080/v1/graphql",
+  uri: process.env.NEXT_PUBLIC_HASURA_PROJECT_ENDPOINT,
 });
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://localhost:8080/v1/graphql",
+    url: process.env.NEXT_PUBLIC_HASURA_PROJECT_ENDPOINT || "ws://localhost:8080/v1/graphql",
     connectionParams: {
       headers: {
         "x-hasura-admin-secret": process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET!,
